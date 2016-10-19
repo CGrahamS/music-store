@@ -9,8 +9,10 @@ import { Album } from "./album.model";
 export class InCartPipe {
   transform(input: Album[]) {
     let output: Album[] = [];
+
     input.forEach(function(album){
-      if (album.inCart = true) {
+      console.log(album);
+      if (album.inCart === true) {
         output.push(album);
       }
     });

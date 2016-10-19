@@ -17,6 +17,7 @@ import { Album } from "./album.model";
     <h4>Artist: {{album.artist}}</h4>
     <p>Genre: <em>{{album.genre}}</em></p>
     <p>$ {{album.price}} </p>
+    <button (click)="addToCart(album)">Add to Cart</button>
   </div>
   `
 })
@@ -27,5 +28,8 @@ export class AlbumListComponent {
   @Input() childAlbumList: Album[];
   onArtistChange(selectedArtist) {
     this.desiredArtist = selectedArtist;
+  }
+  addToCart(album) {
+    album.inCart = true;
   }
 }
