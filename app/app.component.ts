@@ -6,10 +6,19 @@ import { Album } from "./album.model";
   template: `
   <div class="container">
     <h1>Mrs. Music</h1>
-    <album-list
-      [childAlbumList] = "masterAlbumList"
-      [childArtistList] = "masterArtistList"
-          ></album-list>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        <album-list
+          [childAlbumList] = "masterAlbumList"
+          [childArtistList] = "masterArtistList"
+        ></album-list>
+      </div>
+      <div class="col-md-4 col-md-offset-2">
+        <shopping-cart
+          [childAlbumList] = "masterAlbumList"
+        ></shopping-cart>
+      </div>
+    </div>
   </div>
   `
 })
