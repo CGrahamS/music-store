@@ -1,0 +1,20 @@
+{
+  "name": "cd-store",
+  "description": "template for angular projects",
+  "main": "",
+  "authors": [
+    "Stephen Newkirk <newkirk771@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
