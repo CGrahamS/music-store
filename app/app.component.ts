@@ -5,17 +5,21 @@ import { Album } from "./album.model";
   selector: "my-app",
   template: `
   <div class="container">
-    <h1>Mrs. Music</h1>
+    <h1 class="header">Mrs. Music</h1>
     <div class="row">
       <div class="col-md-4 col-md-offset-2">
+      <button (click)="consoleLog()" class="btn btn-danger">Master Log</button>
         <album-list
           [childAlbumList] = "masterAlbumList"
           [childArtistList] = "masterArtistList"
+          (shoppingCartCheckSender) = "checkShoppingCartEmpty()"
         ></album-list>
       </div>
       <div class="col-md-4 col-md-offset-2">
         <shopping-cart
           [childAlbumList] = "masterAlbumList"
+          [childShoppingCartEmpty] = "masterShoppingCartEmpty"
+          (shoppingCartCheckSender) = "checkShoppingCartStatus()"
         ></shopping-cart>
       </div>
     </div>
@@ -34,6 +38,8 @@ export class AppComponent {
     new Album("Pet Sounds", "Beech Boyz", "Forest Punk", 20),
   ];
   masterArtistList: string[] = this.createArtistList();
+  masterShoppingCartEmpty: boolean = true;
+
   createArtistList() {
     let artistArray: string[] = [];
     this.masterAlbumList.forEach(function(album){
@@ -42,5 +48,19 @@ export class AppComponent {
       }
     });
     return artistArray;
+  };
+  checkShoppingCartEmpty() {
+    let that = this;
+    debugger;
+    this.masterAlbumList.forEach(function(album) {
+      if (album.inCart === true) {
+        that.masterShoppingCartEmpty = false;
+      } else {
+        that.masterShoppingCartEmpty = true;
+      }
+    });
+  }
+  consoleLog = function() {
+    console.log("master " + this.masterShoppingCartEmpty);
   };
 }
