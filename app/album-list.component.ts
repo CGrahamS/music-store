@@ -26,12 +26,11 @@ export class AlbumListComponent {
   public desiredArtist = "All";
   @Input() childArtistList: string[];
   @Input() childAlbumList: Album[];
-  @Output() shoppingCartCheckSender = new EventEmitter();
+  @Output() addToShoppingCartSender = new EventEmitter();
   onArtistChange(selectedArtist) {
     this.desiredArtist = selectedArtist;
   }
   addToCart(album) {
-    album.inCart = true;
-    this.shoppingCartCheckSender.emit();
+    this.addToShoppingCartSender.emit(album);
   }
 }

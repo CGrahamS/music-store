@@ -7,8 +7,8 @@ import { Album } from "./album.model";
   <div class="shopping-cart">
   <button (click)="consoleLog()" class="btn btn-danger">Child Log</button>
   <h3>Shopping Cart</h3>
-    <h4 *ngIf="childShoppingCartEmpty">EMPTY</h4>
-    <div *ngFor="let album of childAlbumList | incart">
+    <h4 *ngIf="childShoppingCartList < 0">EMPTY</h4>
+    <div *ngFor="let album of childShoppingCartList">
       <h4>{{album.name}}</h4>
       <p>$ {{album.price}} </p>
       <button (click)="removeFromCart(album)" class="btn btn-danger">Remove</button>
@@ -18,14 +18,11 @@ import { Album } from "./album.model";
 })
 
 export class ShoppingCartComponent {
-  @Input() childAlbumList: Album[];
-  @Input() childShoppingCartEmpty: boolean;
-  @Output() shoppingCartCheckSender = new EventEmitter();
+  @Input() childShoppingCartList: Album[];
+  @Output() removeFromShoppingCartSender = new EventEmitter();
   removeFromCart(album) {
-    album.inCart = false;
-    this.shoppingCartCheckSender.emit();
+    this.removeFromShoppingCartSender.emit(album);
   }
-
   consoleLog = function() {
     console.log("child " + this.childShoppingCartEmpty);
   };

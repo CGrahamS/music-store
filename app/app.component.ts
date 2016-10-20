@@ -12,14 +12,13 @@ import { Album } from "./album.model";
         <album-list
           [childAlbumList] = "masterAlbumList"
           [childArtistList] = "masterArtistList"
-          (shoppingCartCheckSender) = "checkShoppingCartEmpty()"
+          (addToShoppingCartSender) = "addToShoppingCart($event)"
         ></album-list>
       </div>
       <div class="col-md-4 col-md-offset-2">
         <shopping-cart
-          [childAlbumList] = "masterAlbumList"
-          [childShoppingCartEmpty] = "masterShoppingCartEmpty"
-          (shoppingCartCheckSender) = "checkShoppingCartStatus()"
+          [childShoppingCartList] = "masterShoppingCartList"
+          (removeFromShoppingCartSender) = "removeFromShoppingCart($event)"
         ></shopping-cart>
       </div>
     </div>
@@ -38,7 +37,7 @@ export class AppComponent {
     new Album("Pet Sounds", "Beech Boyz", "Forest Punk", 20),
   ];
   masterArtistList: string[] = this.createArtistList();
-  masterShoppingCartEmpty: boolean = true;
+  masterShoppingCartList: Album[] = [];
 
   createArtistList() {
     let artistArray: string[] = [];
@@ -49,18 +48,23 @@ export class AppComponent {
     });
     return artistArray;
   };
-  checkShoppingCartEmpty() {
-    let that = this;
-    debugger;
-    this.masterAlbumList.forEach(function(album) {
-      if (album.inCart === true) {
-        that.masterShoppingCartEmpty = false;
-      } else {
-        that.masterShoppingCartEmpty = true;
-      }
-    });
+
+  addToShoppingCart(album) {
+    this.masterShoppingCartList.push(album);
   }
+
+  removeFromShoppingCart(selectedAlbum) {
+    for (let i = 0; i < this.masterShoppingCartList.length; i++) {
+      if (selectedAlbum === this.masterShoppingCartList[i]) {
+        this.masterShoppingCartList.splice(i, 1);
+      }
+    }
+  }
+
+
+
+
   consoleLog = function() {
-    console.log("master " + this.masterShoppingCartEmpty);
+    console.log("master " + this.albumIndex);
   };
 }
