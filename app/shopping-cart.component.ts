@@ -9,10 +9,10 @@ import { Album } from "./album.model";
     <h4 *ngIf="childShoppingCartList <= 0">EMPTY</h4>
     <div *ngFor="let album of childShoppingCartList">
       <h4>{{album.name}}</h4>
-      <p>$ {{album.price}} </p>
+      <p>{{album.price | currency:'USD':true:'1.2-2'}} </p>
       <button (click)="removeFromCart(album)" class="btn btn-danger">Remove</button>
     </div>
-    <h4 *ngIf="childTotalPrice > 0">Total: $ {{childTotalPrice}}</h4>
+    <h4 *ngIf="childTotalPrice > 0">Total: {{childTotalPrice | currency:'USD':true:'1.2-2'}}</h4>
     <button *ngIf="childTotalPrice > 0" (click)="childClearCart()" class="btn btn-success">Buy</button>
   </div>
   `

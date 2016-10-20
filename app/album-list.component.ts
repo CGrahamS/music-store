@@ -19,7 +19,7 @@ import { Album } from "./album.model";
     <p>Genre: <em>{{album.genre}}</em></p>
     <p *ngIf="album.stock > 0">In Stock: {{album.stock}} </p>
     <p *ngIf="album.stock <= 0">OUT OF STOCK </p>
-    <p>$ {{album.price}} </p>
+    <p>{{album.price| currency:'USD':true:'1.2-2'}} </p>
     <button *ngIf="album.stock > 0" (click)="addToCart(album)" class="btn btn-success">Add to Cart</button>
   </div>
   `
