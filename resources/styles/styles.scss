@@ -1,3 +1,32 @@
 .header {
   text-align: center;
+  font-family: 'Permanent Marker', cursive;
+  color: white;
+  font-size: 80pt;
+    height: 250px;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  background-image: url("https://wearehalfawake.files.wordpress.com/2012/01/dsc_0084.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.album {
+  width: 250px;
+  margin: 4% ;
+  height: 440px;
+    img {
+      height: 170px;
+      width: 170px;
+    }
+}
+
+.form-control {
+  width: 30%;
+  margin: 0 25%;
 }
